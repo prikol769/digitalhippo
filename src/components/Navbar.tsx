@@ -7,6 +7,7 @@ import Cart from "./Cart";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { cookies } from "next/headers";
 import UserAccountNav from "./UserAccountNav";
+import MobileNav from "./MobileNav";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -18,7 +19,7 @@ const Navbar = async () => {
         <MaxWidthWrapper>
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">
-              {/* TODO: Mobile nav */}
+              <MobileNav />
 
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
@@ -26,7 +27,7 @@ const Navbar = async () => {
                 </Link>
               </div>
 
-              <div className="hidden z-50 lg:ml-8  lg:block lg:self-stretch">
+              <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
                 <NavItems />
               </div>
 
@@ -35,17 +36,16 @@ const Navbar = async () => {
                   {user ? null : (
                     <Link
                       href="/sign-in"
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={buttonVariants({
+                        variant: "ghost",
+                      })}
                     >
                       Sign in
                     </Link>
                   )}
 
                   {user ? null : (
-                    <span
-                      className="h-6 w-px bg-gray-200"
-                      aria-hidden="true"
-                    ></span>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   )}
 
                   {user ? (
@@ -53,17 +53,16 @@ const Navbar = async () => {
                   ) : (
                     <Link
                       href="/sign-up"
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={buttonVariants({
+                        variant: "ghost",
+                      })}
                     >
                       Create account
                     </Link>
                   )}
 
                   {user ? (
-                    <span
-                      className="h-6 w-px bg-gray-200"
-                      aria-hidden="true"
-                    ></span>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   ) : null}
 
                   {user ? null : (
@@ -71,7 +70,7 @@ const Navbar = async () => {
                       <span
                         className="h-6 w-px bg-gray-200"
                         aria-hidden="true"
-                      ></span>
+                      />
                     </div>
                   )}
 
